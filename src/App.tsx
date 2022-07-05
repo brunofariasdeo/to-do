@@ -1,12 +1,11 @@
 import { Header } from "./components/Header";
+import { NewTask } from "./components/NewTask";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="bg-black">
-        <h1 className="text-3xl font-bold underline">Hello World!</h1>
-      </div>
+      <NewTask />
     </>
   );
 }
