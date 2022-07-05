@@ -21,7 +21,11 @@ export function TaskList() {
           </span>
         </div>
       </div>
-      <Task />
+
+      <div className="flex flex-col gap-3">
+        <Task />
+        <Task />
+      </div>
     </section>
   );
 }
