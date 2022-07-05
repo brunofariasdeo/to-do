@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="w-full px-80 flex flex-col items-center justify-center">
+      <div className="w-full pb-10 px-80 2xl:px-[32rem] flex flex-col items-center justify-center">
         <NewTask />
         <TaskList />
       </div>
