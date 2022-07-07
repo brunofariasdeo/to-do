@@ -16,6 +16,11 @@ export function TaskList({
   handleRemovedTask,
   tasks,
 }: TaskListProps) {
+  const tasksCount = tasks.length;
+  const completedTasksCount = tasks.filter(
+    (task) => task.isCompleted === true
+  ).length;
+
   return (
     <section className="w-full mt-16 flex flex-col">
       <div className="mb-6 flex items-center justify-between">
@@ -24,7 +29,7 @@ export function TaskList({
             Tarefas criadas
           </h1>
           <span className="w-6 h-5 px-0.5 py-2 flex items-center justify-center text-xs font-bold text-gray-200 bg-gray-400 rounded-xl">
-            5
+            {tasks.length}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -32,7 +37,7 @@ export function TaskList({
             Concluídas
           </h1>
           <span className="w-13 h-5 px-2 py-2 flex items-center justify-center text-xs font-bold text-gray-200 bg-gray-400 rounded-xl">
-            2 de 5
+            {`${completedTasksCount} de ${tasksCount}`}
           </span>
         </div>
       </div>
