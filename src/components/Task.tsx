@@ -18,8 +18,8 @@ export function Task({
   title,
 }: Task) {
   return (
-    <div className="w-full p-4 flex items-center justify-between text-gray-100 placeholder-gray-300 bg-gray-500 border rounded-lg border-gray-400">
-      <div className="flex">
+    <div className="w-full p-4 gap-4 flex items-center justify-between text-gray-100 placeholder-gray-300 bg-gray-500 border rounded-lg border-gray-400">
+      <div className="flex items-center gap-4">
         <Checkbox
           isCompleted={isCompleted}
           onClick={() => handleCompletedTask(id)}
