@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 interface newTask {
   id: string;
-  task: string;
+  title: string;
   isCompleted: boolean;
 }
 interface NewTaskProps {
@@ -22,7 +22,7 @@ export function NewTask({ handleNewTask }: NewTaskProps) {
   const handleClick = () => {
     handleNewTask({
       id: uuidv4(),
-      task: task,
+      title: task,
       isCompleted: false,
     });
   };

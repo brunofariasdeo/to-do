@@ -1,6 +1,15 @@
 import { Task } from "./Task";
 
-export function TaskList() {
+interface Task {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+}
+interface TaskListProps {
+  tasks: Task[];
+}
+
+export function TaskList({ tasks }: TaskListProps) {
   return (
     <section className="w-full mt-16 flex flex-col">
       <div className="mb-6 flex items-center justify-between">
@@ -23,8 +32,13 @@ export function TaskList() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <Task />
-        <Task />
+        {tasks.map((task) => (
+          <Task
+            key={task.id}
+            title={task.title}
+            isCompleted={task.isCompleted}
+          />
+        ))}
       </div>
     </section>
   );

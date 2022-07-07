@@ -5,7 +5,7 @@ import { TaskList } from "./components/TaskList";
 
 interface newTask {
   id: string;
-  task: string;
+  title: string;
   isCompleted: boolean;
 }
 
@@ -21,7 +21,7 @@ function App() {
       <Header />
       <div className="w-full pb-10 px-80 2xl:px-[32rem] flex flex-col items-center justify-center">
         <NewTask handleNewTask={handleNewTask} />
-        <TaskList />
+        <TaskList tasks={tasks} />
       </div>
     </>
   );
