@@ -7,10 +7,15 @@ interface Task {
 }
 interface TaskListProps {
   handleCompletedTask: (id: string) => void;
+  handleRemovedTask: (id: string) => void;
   tasks: Task[];
 }
 
-export function TaskList({ handleCompletedTask, tasks }: TaskListProps) {
+export function TaskList({
+  handleCompletedTask,
+  handleRemovedTask,
+  tasks,
+}: TaskListProps) {
   return (
     <section className="w-full mt-16 flex flex-col">
       <div className="mb-6 flex items-center justify-between">
@@ -36,6 +41,7 @@ export function TaskList({ handleCompletedTask, tasks }: TaskListProps) {
         {tasks.map((task) => (
           <Task
             handleCompletedTask={handleCompletedTask}
+            handleRemovedTask={handleRemovedTask}
             id={task.id}
             isCompleted={task.isCompleted}
             key={task.id}

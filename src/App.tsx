@@ -28,12 +28,24 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const handleRemovedTask = (id: string) => {
+    const currentTasks = tasks.filter((task) => {
+      return task.id !== id;
+    });
+
+    setTasks(currentTasks);
+  };
+
   return (
     <>
       <Header />
       <div className="w-full pb-10 px-80 2xl:px-[32rem] flex flex-col items-center justify-center">
         <NewTask handleNewTask={handleNewTask} />
-        <TaskList handleCompletedTask={handleCompletedTask} tasks={tasks} />
+        <TaskList
+          handleCompletedTask={handleCompletedTask}
+          handleRemovedTask={handleRemovedTask}
+          tasks={tasks}
+        />
       </div>
     </>
   );
