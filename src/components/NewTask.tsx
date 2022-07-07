@@ -25,11 +25,13 @@ export function NewTask({ handleNewTask }: NewTaskProps) {
       title: task,
       isCompleted: false,
     });
+
+    setTask("");
   };
 
   return (
     <section className="w-full flex items-center justify-center">
-      <Input onChange={handleChange} />
+      <Input onChange={handleChange} value={task} />
       <CreateButton onClick={handleClick} />
     </section>
   );
