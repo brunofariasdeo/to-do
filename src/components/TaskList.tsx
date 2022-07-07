@@ -1,3 +1,4 @@
+import { Notepad } from "phosphor-react";
 import { Task } from "./Task";
 
 interface Task {
@@ -23,7 +24,7 @@ export function TaskList({
 
   return (
     <section className="w-full mt-16 flex flex-col">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-8 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h1 className="text-sm text-blue font-bold leading-4">
             Tarefas criadas
@@ -41,19 +42,31 @@ export function TaskList({
           </span>
         </div>
       </div>
+      {tasks.length > 0 ? (
+        <div className="flex flex-col gap-3">
+          {tasks.map((task) => (
+            <Task
+              handleCompletedTask={handleCompletedTask}
+              handleRemovedTask={handleRemovedTask}
+              id={task.id}
+              isCompleted={task.isCompleted}
+              key={task.id}
+              title={task.title}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="p-16 flex flex-col items-center justify-center gap-4 rounded border-t-[1px] border-gray-300">
+          <Notepad color="#808080" size={56} />
 
-      <div className="flex flex-col gap-3">
-        {tasks.map((task) => (
-          <Task
-            handleCompletedTask={handleCompletedTask}
-            handleRemovedTask={handleRemovedTask}
-            id={task.id}
-            isCompleted={task.isCompleted}
-            key={task.id}
-            title={task.title}
-          />
-        ))}
-      </div>
+          <div>
+            <p className="text-center text-base text-gray-300">
+              <strong>Você ainda não tem tarefas cadastradas</strong> <br />
+              Crie tarefas e organize seus itens a fazer
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
