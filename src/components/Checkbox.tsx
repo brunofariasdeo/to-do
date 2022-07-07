@@ -1,5 +1,5 @@
 import { CheckCircle, Circle } from "phosphor-react";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 
 interface CheckboxProps {
   isCompleted: boolean;
@@ -7,19 +7,25 @@ interface CheckboxProps {
 }
 
 export function Checkbox({ isCompleted, onClick }: CheckboxProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return isCompleted ? (
     <CheckCircle
       className="cursor-pointer shrink-0"
-      color="#5E60CE"
+      color={isHovered ? "#8284FA" : "#5E60CE"}
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       size={20}
       weight="fill"
     />
   ) : (
     <Circle
       className="cursor-pointer shrink-0"
-      color="#4EA8DE"
+      color={isHovered ? "#1E6F9F" : "#4EA8DE"}
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       size={20}
     />
   );
