@@ -7,6 +7,7 @@ module.exports = {
         sans: "Inter, sans-serif",
       },
       colors: {
+        danger: "#E25858",
         gray: {
           100: "#F2F2F2",
           200: "#D9D9D9",
