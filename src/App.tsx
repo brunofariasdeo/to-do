@@ -12,6 +12,18 @@ interface newTask {
 function App() {
   const [tasks, setTasks] = useState<newTask[]>([]);
 
+  const handleCompletedTask = (id: string) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.isCompleted = !task.isCompleted;
+      }
+
+      return task;
+    });
+
+    setTasks(newTasks);
+  };
+
   const handleNewTask = (newTask: newTask) => {
     setTasks([...tasks, newTask]);
   };
@@ -21,7 +33,7 @@ function App() {
       <Header />
       <div className="w-full pb-10 px-80 2xl:px-[32rem] flex flex-col items-center justify-center">
         <NewTask handleNewTask={handleNewTask} />
-        <TaskList tasks={tasks} />
+        <TaskList handleCompletedTask={handleCompletedTask} tasks={tasks} />
       </div>
     </>
   );

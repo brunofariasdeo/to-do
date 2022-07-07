@@ -6,10 +6,11 @@ interface Task {
   isCompleted: boolean;
 }
 interface TaskListProps {
+  handleCompletedTask: (id: string) => void;
   tasks: Task[];
 }
 
-export function TaskList({ tasks }: TaskListProps) {
+export function TaskList({ handleCompletedTask, tasks }: TaskListProps) {
   return (
     <section className="w-full mt-16 flex flex-col">
       <div className="mb-6 flex items-center justify-between">
@@ -34,9 +35,11 @@ export function TaskList({ tasks }: TaskListProps) {
       <div className="flex flex-col gap-3">
         {tasks.map((task) => (
           <Task
+            handleCompletedTask={handleCompletedTask}
+            id={task.id}
+            isCompleted={task.isCompleted}
             key={task.id}
             title={task.title}
-            isCompleted={task.isCompleted}
           />
         ))}
       </div>
