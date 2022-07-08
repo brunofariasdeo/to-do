@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
 import { TaskList } from "./components/TaskList";
@@ -43,6 +43,22 @@ function App() {
 
     return tasksSorted;
   };
+
+  useEffect(() => {
+    const localValue = localStorage?.getItem("todo");
+
+    if (typeof localValue === "string") {
+      const cachedTasks = JSON.parse(localValue);
+
+      if (cachedTasks.length > 0) {
+        setTasks(cachedTasks);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
