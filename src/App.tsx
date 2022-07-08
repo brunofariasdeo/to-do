@@ -3,14 +3,14 @@ import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
 import { TaskList } from "./components/TaskList";
 
-interface newTask {
+interface Task {
   id: string;
   title: string;
   isCompleted: boolean;
 }
 
 function App() {
-  const [tasks, setTasks] = useState<newTask[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const handleCompletedTask = (id: string) => {
     const newTasks = tasks.map((task) => {
@@ -21,10 +21,10 @@ function App() {
       return task;
     });
 
-    setTasks(newTasks);
+    setTasks(sortTasksByCompletion(newTasks));
   };
 
-  const handleNewTask = (newTask: newTask) => {
+  const handleNewTask = (newTask: Task) => {
     setTasks([...tasks, newTask]);
   };
 
@@ -34,6 +34,14 @@ function App() {
     });
 
     setTasks(currentTasks);
+  };
+
+  const sortTasksByCompletion = (tasks: Task[]) => {
+    const tasksSorted = tasks?.sort(
+      (a, b) => Number(a.isCompleted) - Number(b.isCompleted)
+    );
+
+    return tasksSorted;
   };
 
   return (
