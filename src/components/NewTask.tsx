@@ -19,7 +19,7 @@ export function NewTask({ handleNewTask }: NewTaskProps) {
     setTask((event.target as HTMLInputElement).value);
   };
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     handleNewTask({
       id: uuidv4(),
       title: task,
@@ -31,8 +31,8 @@ export function NewTask({ handleNewTask }: NewTaskProps) {
 
   return (
     <section className="w-full flex items-center justify-center">
-      <Input onChange={handleChange} value={task} />
-      <CreateButton onClick={handleClick} />
+      <Input onChange={handleChange} handleSubmit={handleSubmit} value={task} />
+      <CreateButton onClick={handleSubmit} />
     </section>
   );
 }
