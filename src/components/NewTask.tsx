@@ -32,7 +32,7 @@ export function NewTask({ handleNewTask }: NewTaskProps) {
   return (
     <section className="w-full flex items-center justify-center">
       <Input onChange={handleChange} handleSubmit={handleSubmit} value={task} />
-      <CreateButton onClick={handleSubmit} />
+      <CreateButton isInputEmpty={Boolean(task)} onClick={handleSubmit} />
     </section>
   );
 }
